@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Header from './components/header';
+import { ThemeProvider } from 'styled-components';
+import Stepper from './components/stepper';
+import Title from './components/title';
+import Form from './components/form';
 import './App.css';
 
+const theme = {
+	font: 'Calibri',
+	flexboxgrid: {
+		// Defaults
+		gridSize: 12, // columns
+		gutterWidth: 0, // rem
+		outerMargin: 0, // rem
+		mediaQuery: 'only screen',
+		container: {
+			sm: 46, // rem
+			md: 61, // rem
+			lg: 76 // rem
+		},
+		breakpoints: {
+			xs: 0, // em
+			sm: 48, // em
+			md: 64, // em
+			lg: 75 // em
+		}
+	}
+};
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<ThemeProvider theme={theme}>
+				<div>
+					<Header />
+					<Stepper />
+					<Title />
+					<Form />
+				</div>
+			</ThemeProvider>
+		);
+	}
 }
 
 export default App;
